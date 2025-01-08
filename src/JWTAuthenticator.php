@@ -1,4 +1,5 @@
 <?php
+namespace sso_otp_sumut\jwtauthentication;
 
 use Yii;
 use yii\base\Component;
