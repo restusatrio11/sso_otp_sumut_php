@@ -36,11 +36,12 @@ cd <nama-direktori>
 Instal semua dependensi yang dibutuhkan menggunakan npm:
 
 ```bash
-composer install firebase
+composer require firebase/php-jwt --ignore-platform-reqs
 ```
 lalu install vendornya
 ```bash
-composer require sso_otp_sumut/jwt-authentication
+composer require sso_otp_sumut/jwt-authentication:dev-main --ignore-platform-reqs
+
 ```
 ### 4. Pada file params.php
 
@@ -70,6 +71,11 @@ Penjelasan variabel .env:
 file `web.php` di direktori root proyek (biasanya di config). Salin dan sesuaikan konfigurasi berikut:
 
 ```bash
+"autoload": {
+    "psr-4": {
+      "sso_otp_sumut\\jwtauthentication\\": "vendor/sso_otp_sumut/jwt-authentication/src/"
+    }
+  },
 'components' => [
         'request' => [
             'enableCookieValidation' => false, // ini di ubah jika true jika tidak ada tambahkan
@@ -89,6 +95,10 @@ file `web.php` di direktori root proyek (biasanya di config). Salin dan sesuaika
         ],
     ]]]
 ```
+jangan lupa dump autoload dengan 
+```bash
+composer dump-autoload
+```
 
 ### Struktur Proyek
 
@@ -106,7 +116,7 @@ Berikut adalah struktur proyek secara keseluruhan:
 Jika token JWT tidak ada atau tidak valid, pengguna akan diarahkan ke halaman login SSO yang ditentukan dalam variabel `LINK_SSO`. buat function `beforeAction` sebelum mengakses ke `action index` pada siteController untuk authentikasinya. contoh aplikasi penggunaan di bawah ini
 
 ```php
-use sso_otp_sumut\JwtAuthentication\JWTAuthenticator;
+use sso_otp_sumut\jwtauthentication\JWTAuthenticator;
 
  public function beforeAction($action)
     {
