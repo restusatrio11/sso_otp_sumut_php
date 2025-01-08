@@ -16,5 +16,6 @@
         "psr-4": {
             "sso_otp_sumut\\JwtAuthentication\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
