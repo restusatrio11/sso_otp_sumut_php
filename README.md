@@ -106,6 +106,8 @@ Berikut adalah struktur proyek secara keseluruhan:
 Jika token JWT tidak ada atau tidak valid, pengguna akan diarahkan ke halaman login SSO yang ditentukan dalam variabel `LINK_SSO`. buat function `beforeAction` sebelum mengakses ke `action index` pada siteController untuk authentikasinya. contoh aplikasi penggunaan di bawah ini
 
 ```php
+use sso_otp_sumut\JwtAuthentication\JWTAuthenticator;
+
  public function beforeAction($action)
     {
         // Panggil komponen JWTAuthenticator untuk memverifikasi token sebelum aksi dijalankan
