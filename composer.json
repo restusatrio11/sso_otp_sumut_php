@@ -1,0 +1,20 @@
+{
+    "name": "sso_otp_sumut/jwt-authentication",
+    "description": "SSO Login menggunakan OTP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Restu Satrio Pinanggih",
+            "email": "restuilham212@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "sso_otp_sumut\\JwtAuthentication\\": "src/"
+        }
+    }
+}
