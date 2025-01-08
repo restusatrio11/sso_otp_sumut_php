@@ -3,6 +3,8 @@
     "description": "SSO Login menggunakan OTP",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Restu Satrio Pinanggih",
