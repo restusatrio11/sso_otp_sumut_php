@@ -71,11 +71,6 @@ Penjelasan variabel .env:
 file `web.php` di direktori root proyek (biasanya di config). Salin dan sesuaikan konfigurasi berikut:
 
 ```bash
-"autoload": {
-    "psr-4": {
-      "sso_otp_sumut\\jwtauthentication\\": "vendor/sso_otp_sumut/jwt-authentication/src/"
-    }
-  },
 'components' => [
         'request' => [
             'enableCookieValidation' => false, // ini di ubah jika true jika tidak ada tambahkan
@@ -94,6 +89,14 @@ file `web.php` di direktori root proyek (biasanya di config). Salin dan sesuaika
             'roles' => ['@'],
         ],
     ]]]
+```
+tambahkan di composer.json:
+```php
+"autoload": {
+    "psr-4": {
+      "sso_otp_sumut\\jwtauthentication\\": "vendor/sso_otp_sumut/jwt-authentication/src/"
+    }
+  }
 ```
 jangan lupa dump autoload dengan 
 ```bash
@@ -179,16 +182,6 @@ Untuk logout, akses halaman `/logout` yang akan menghapus cookie JWT dan mengara
             'sameSite' => 'None',
         ]));
         
-        // Mengatur waktu kedaluwarsa cookie tokenApp ke waktu yang sudah lewat
-        Yii::$app->response->cookies->add(new \yii\web\Cookie([
-            'name' => 'tokenApp',
-            'value' => '',
-            'domain' => 'bps.web.id',
-            'expire' => time() - 3600, // Waktu kedaluwarsa sudah lewat
-            'secure' => true,
-            'httpOnly' => true,
-            'sameSite' => 'None',
-        ]));
 
         
         Yii::$app->user->logout();
